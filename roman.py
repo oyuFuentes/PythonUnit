@@ -22,3 +22,6 @@ def to_roman(numero_entero):
 			result += numeral
 			numero_entero -= integer
 	return result
+
+
+class OutOfRangeError(ValueError): pass
