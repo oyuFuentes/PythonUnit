@@ -42,3 +42,5 @@ def from_roman(numero_romano):
 class OutOfRangeError(ValueError): pass
 
 class NotIntegerError(ValueError): pass
+
+class InvalidRomanNumeralError(ValueError): pass
