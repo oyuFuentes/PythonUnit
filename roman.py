@@ -16,6 +16,9 @@ def to_roman(numero_entero):
 	"""
 	TDD
 	"""
+	if numero_entero > 3999:  
+		raise OutOfRangeError('number out of range (must be less than 4000)') 
+
 	result = ''
 	for numeral, integer in roman_numeral_map:
 		while numero_entero >= integer:                     
