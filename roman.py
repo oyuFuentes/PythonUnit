@@ -19,6 +19,9 @@ def to_roman(numero_entero):
 	if not (0 < numero_entero < 4000):
 		raise OutOfRangeError('number out of range (must be less than 1...3999)') 
 
+	if not isinstance(numero_entero, int):                                          
+		raise NotIntegerError('non-integers can not be converted')
+
 	result = ''
 	for numeral, integer in roman_numeral_map:
 		while numero_entero >= integer:                     
@@ -28,3 +31,5 @@ def to_roman(numero_entero):
 
 
 class OutOfRangeError(ValueError): pass
+
+class NotIntegerError(ValueError): pass
