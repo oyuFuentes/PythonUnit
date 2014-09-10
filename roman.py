@@ -31,6 +31,13 @@ def to_roman(numero_entero):
 
 def from_roman(numero_romano):
 	'''convert Roman numeral to integer'''
+	result = 0
+	index = 0
+	for numeral, integer in roman_numeral_map:
+		while numero_romano[index:index+len(numeral)] == numeral:  
+			result += integer
+			index += len(numeral)
+	return result
 
 class OutOfRangeError(ValueError): pass
 
