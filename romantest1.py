@@ -67,6 +67,11 @@ class KnownValues(unittest.TestCase):
          result = roman.to_roman(integer)       
          self.assertEqual(numeral, result) 
 
+    def test_from_roman_known_values(self):
+      for integer, numeral in self.known_values:
+         result = roman.from_roman(numeral)
+         self.assertEqual(integer, result)
+
 
 class ToRomanBadInput(unittest.TestCase):                                 
 	def test_too_large(self):                                             
@@ -84,6 +89,16 @@ class ToRomanBadInput(unittest.TestCase):
 	def test_non_integer(self):
 		'''to_roman should fail with non-integer input'''
 		self.assertRaises(roman.NotIntegerError, roman.to_roman, 0.5)
+
+class RoundtripCheck(unittest.TestCase):
+    def test_roundtrip(self):
+		'''from_roman(to_roman(n))==n for all n'''
+
+		for integer in range(1, 4000):
+			numeral = roman.to_roman(integer)
+			result = roman.from_roman(numeral)
+			self.assertEqual(integer, result)
+
 
 if __name__ == '__main__':
     unittest.main()
